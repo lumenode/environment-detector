@@ -1,0 +1,31 @@
+{
+  "name": "lumenode-environment-detector",
+  "version": "1.0.0",
+  "description": "IOC environment-detector",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/.bin/mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lumenode/environment-detector.git"
+  },
+  "keywords": [
+    "ioc"
+  ],
+  "author": "Iurii Krevnyi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lumenode/environment-detector/issues"
+  },
+  "homepage": "https://github.com/lumenode/environment-detector#readme",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "request": "^2.67.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "should": "^8.0.2",
+    "sinon": "^1.17.2"
+  }
+}
