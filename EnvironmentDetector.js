@@ -14,7 +14,7 @@ EnvironmentDetector.prototype.detect = function (cb) {
     this.envFile = '.env';
   };
 
-  var envData = this.filesystem.readFileSync(this.envPath + this.envFile, 'utf8');
+  var envData = this.filesystem.get(this.envPath + this.envFile);
   var envJson = JSON.parse(envData);
 
   _.each(envJson.data, function (value, key) {

@@ -13,7 +13,9 @@
   "keywords": [
     "ioc"
   ],
-  "author": "Iurii Krevnyi",
+  "author": {
+    "name": "Iurii Krevnyi"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lumenode/environment-detector/issues"
@@ -27,5 +29,10 @@
     "mocha": "^2.3.4",
     "should": "^8.0.2",
     "sinon": "^1.17.2"
-  }
+  },
+  "gitHead": "20188f73880ae5c1a65bc5201c1402e1d8158355",
+  "readme": "ERROR: No README data found!",
+  "_id": "lumenode-environment-detector@1.0.0",
+  "_shasum": "4e5e6ae3e9a4c17df3f1bd5d44a165a008c913b4",
+  "_from": "lumenode-environment-detector@*"
 }
