@@ -21,7 +21,7 @@ EnvironmentDetector.prototype.detect = function (cb) {
     process.env[key] = value;
   });
 
-  cb();
+  process.nextTick(cb);
 };
 
 module.exports = EnvironmentDetector;

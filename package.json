@@ -1,6 +1,6 @@
 {
   "name": "lumenode-environment-detector",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "IOC environment-detector",
   "main": "index.js",
   "scripts": {
