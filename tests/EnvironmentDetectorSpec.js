@@ -1,16 +1,16 @@
 'use strict';
 
 require('should');
-var sinon = require('sinon');
-var EnvironmentDetector = require('../EnvironmentDetector');
+let sinon = require('sinon');
+let EnvironmentDetector = require('../EnvironmentDetector');
 
-describe('<Unit Test>', function () {
-  describe('EnvironmentDetector Spec', function () {
+describe('<Unit Test>', () => {
+  describe('EnvironmentDetector Spec', () => {
 
-    it('loades data into process.env', function (done) {
-      var filesystem = require('fs');
-      var mock = sinon.mock(filesystem);
-      var data = {
+    it('loades data into process.env', done => {
+      let filesystem = {get: () => {}};
+      let mock = sinon.mock(filesystem);
+      let data = {
         "data": {
           "testing_1": "1",
           "testing_2": "2",
@@ -18,10 +18,10 @@ describe('<Unit Test>', function () {
         }
       };
 
-      mock.expects('readFileSync').once().returns(JSON.stringify(data));
+      mock.expects('get').once().returns(JSON.stringify(data));
 
-      var detector = new EnvironmentDetector(filesystem, __dirname + '/', 'testing.env');
-      detector.detect(function() {
+      let detector = new EnvironmentDetector(filesystem, __dirname + '/', 'testing.env');
+      detector.detect(() => {
         process.env.should.have.properties([
           'testing_1',
           'testing_2',
@@ -32,10 +32,9 @@ describe('<Unit Test>', function () {
         process.env.testing_2.should.be.equal('2');
         process.env.testing_3.should.be.equal('3');
 
+        mock.verify();
         done();
       });
-
-      mock.verify();
     });
 
   });

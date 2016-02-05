@@ -1,27 +1,31 @@
 'use strict';
 
-var _ = require('lodash');
+let _ = require('lodash');
 
-function EnvironmentDetector(filesystem, envPath, envFile) {
-  this.filesystem = filesystem;
+class EnvironmentDetector {
 
-  this.envPath = envPath;
-  this.envFile = envFile;
+  constructor(filesystem, envPath, envFile) {
+    this.filesystem = filesystem;
+
+    this.envPath = envPath;
+    this.envFile = envFile;
+  }
+
+  detect(cb) {
+    if (typeof this.envFile !== 'string') {
+      this.envFile = '.env';
+    };
+
+    let envData = this.filesystem.get(this.envPath + this.envFile);
+    let envJson = JSON.parse(envData);
+
+    _.each(envJson.data, (value, key) => {
+      process.env[key] = value;
+    });
+
+    process.nextTick(cb);
+  }
+
 }
-
-EnvironmentDetector.prototype.detect = function (cb) {
-  if (typeof this.envFile !== 'string') {
-    this.envFile = '.env';
-  };
-
-  var envData = this.filesystem.get(this.envPath + this.envFile);
-  var envJson = JSON.parse(envData);
-
-  _.each(envJson.data, function (value, key) {
-    process.env[key] = value;
-  });
-
-  process.nextTick(cb);
-};
 
 module.exports = EnvironmentDetector;
